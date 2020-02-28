@@ -26,17 +26,17 @@ public class ReservationsRestController {
 
     }
 
-    @GetMapping("reservation")
+    @GetMapping("reservation/{recourseId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public List<ReservationDto> getReservations() {
+    public List<ReservationDto> getReservations(@PathVariable("recourseId") String recourseId) {
 
         return null;
     }
 
-    @DeleteMapping("reservation/{id}")
+    @DeleteMapping("reservation/{reservationId}")
     @ExceptionHandler({ NoReservationForSuchIdException.class, })
     @ResponseStatus(HttpStatus.OK)
-    public void deleteReservations(@PathVariable("id") String reservationId) {
+    public void deleteReservations(@PathVariable("reservationId") String reservationId) {
 
     }
 }
