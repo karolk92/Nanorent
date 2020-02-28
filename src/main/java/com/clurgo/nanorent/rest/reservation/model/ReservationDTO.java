@@ -3,15 +3,15 @@ package com.clurgo.nanorent.rest.reservation.model;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
-public class ReservationDto {
+public class ReservationDTO {
 
     private Long reservationId;
     private Long recourseId;
-    private Instant startReservation;
-    private Instant endReservation;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
     private String nameAndSurname;
 }

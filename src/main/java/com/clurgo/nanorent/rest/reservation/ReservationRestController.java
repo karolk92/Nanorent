@@ -3,7 +3,7 @@ package com.clurgo.nanorent.rest.reservation;
 import com.clurgo.nanorent.rest.reservation.errors.AlreadyDefinedReservationException;
 import com.clurgo.nanorent.rest.reservation.errors.NoReservationForSuchIdException;
 import com.clurgo.nanorent.rest.reservation.errors.ReservationInPastException;
-import com.clurgo.nanorent.rest.reservation.model.ReservationDto;
+import com.clurgo.nanorent.rest.reservation.model.ReservationDTO;
 import com.clurgo.nanorent.rest.reservation.validation.ReservationValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-public class ReservationsRestController {
+public class ReservationRestController {
 
     private final ReservationValidator reservationValidator;
 
@@ -22,13 +22,13 @@ public class ReservationsRestController {
     @ExceptionHandler({ AlreadyDefinedReservationException.class,
             ReservationInPastException.class,})
     @ResponseStatus(HttpStatus.CREATED)
-    public void createReservation(@RequestBody ReservationDto reservationDto) {
+    public void createReservation(@RequestBody ReservationDTO reservationDto) {
 
     }
 
     @GetMapping("reservation/{recourseId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public List<ReservationDto> getReservations(@PathVariable("recourseId") String recourseId) {
+    public List<ReservationDTO> getReservations(@PathVariable("recourseId") String recourseId) {
 
         return null;
     }

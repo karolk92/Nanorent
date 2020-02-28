@@ -1,14 +1,15 @@
 package com.clurgo.nanorent.rest.resource;
 
+import com.clurgo.nanorent.service.resource.ResourceService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/resources")
-public class ResourcesRestController {
+public class ResourceRestController {
 
     private final ResourceService resourceService;
 
-    public ResourcesRestController(ResourceService resourceService) {
+    public ResourceRestController(ResourceService resourceService) {
         this.resourceService = resourceService;
     }
 

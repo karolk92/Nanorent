@@ -1,4 +1,4 @@
-package com.clurgo.nanorent.rest.resource;
+package com.clurgo.nanorent.service.resource;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +19,4 @@ public class ResourceServiceImpl implements ResourceService {
     public ResourceDTO getResource() {
         return null;
     }
-
-
 }

@@ -1,7 +1,7 @@
-package com.clurgo.nanorent.rest.categories;
+package com.clurgo.nanorent.service.category;
 import java.util.List;
 
-public interface CategoriesService {
+public interface CategoryService {
 
     // get all categories
     List<Category> getCategories();

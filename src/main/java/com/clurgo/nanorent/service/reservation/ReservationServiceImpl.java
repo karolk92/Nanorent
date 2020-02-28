@@ -1,11 +1,13 @@
-package com.clurgo.nanorent.rest.categories;
+package com.clurgo.nanorent.service.reservation;
 
+import com.clurgo.nanorent.service.category.CategoryService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Service
-public class CategoriesServiceImpl implements CategoriesService {
+public class ReservationServiceImpl implements CategoryService {
 
 
     @Override
