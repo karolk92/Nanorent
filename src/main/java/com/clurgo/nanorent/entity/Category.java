@@ -1,4 +1,4 @@
-package com.clurgo.nanorent.com.clurgo.nanorent.entity;
+package com.clurgo.nanorent.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
