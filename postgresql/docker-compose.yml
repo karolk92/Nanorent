@@ -1,0 +1,10 @@
+postgres:
+  image: postgres:9.4
+  container_name: postgres
+  environment:
+    - POSTGRES_DB=nanorent
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=postgres
+  ports:
+    - "5432:5432"
+
