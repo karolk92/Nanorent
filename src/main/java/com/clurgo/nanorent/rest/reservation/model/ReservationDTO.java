@@ -1,5 +1,6 @@
 package com.clurgo.nanorent.rest.reservation.model;
 
+import com.clurgo.nanorent.entity.Resource;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,10 +10,9 @@ import java.time.LocalDateTime;
 @Builder
 public class ReservationDTO {
 
-    private Long reservationId;
-    private Long recourseId;
-    private String firstName;
-    private String lastName;
+    private Long id;
+    private String username;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
+    private Resource resource;
 }

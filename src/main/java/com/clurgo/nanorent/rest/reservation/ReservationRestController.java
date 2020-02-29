@@ -1,12 +1,11 @@
 package com.clurgo.nanorent.rest.reservation;
 
 import com.clurgo.nanorent.rest.reservation.errors.AlreadyDefinedReservationException;
-import com.clurgo.nanorent.rest.reservation.errors.NoReservationForSuchIdException;
+import com.clurgo.nanorent.rest.reservation.errors.ReservationNotFoundException;
 import com.clurgo.nanorent.rest.reservation.errors.ReservationInPastException;
 import com.clurgo.nanorent.rest.reservation.model.ReservationDTO;
 import com.clurgo.nanorent.rest.reservation.validation.ReservationValidator;
 import com.clurgo.nanorent.service.reservation.ReservationService;
-import com.clurgo.nanorent.service.reservation.ReservationServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +37,7 @@ public class ReservationRestController {
     }
 
     @DeleteMapping("category/resource/reservation/{reservationId}")
-    @ExceptionHandler({ NoReservationForSuchIdException.class, })
+    @ExceptionHandler({ ReservationNotFoundException.class, })
     @ResponseStatus(HttpStatus.OK)
     public void deleteReservations(@PathVariable("reservationId") String reservationId) {
 
