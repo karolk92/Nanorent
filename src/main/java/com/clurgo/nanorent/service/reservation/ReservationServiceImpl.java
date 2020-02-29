@@ -3,16 +3,17 @@ package com.clurgo.nanorent.service.reservation;
 import com.clurgo.nanorent.entity.Reservation;
 import com.clurgo.nanorent.repository.ReservationRepository;
 import com.clurgo.nanorent.rest.reservation.model.ReservationDTO;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+@AllArgsConstructor
 @Service
 public class ReservationServiceImpl implements ReservationService {
 
-    private ReservationRepository reservationRepository;
+    private final ReservationRepository reservationRepository;
 
     @Override
     public ReservationDTO getReservationById(Long id) {
-        //todo optional
         Reservation reservation = reservationRepository.findById(id).orElseThrow();
 
         return ReservationDTO.builder()
@@ -26,25 +27,19 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public void addReservation(ReservationDTO reservationDTO) {
-        Reservation reservation = mapToReservation(reservationDTO);
-
-        reservationRepository.save(reservation);
-    }
-
-    @Override
-    public void deleteReservation(ReservationDTO reservationDTO) {
-        Reservation reservation = mapToReservation(reservationDTO);
-
-        reservationRepository.save(reservation);
-    }
-
-    private Reservation mapToReservation(ReservationDTO reservationDTO) {
-        return Reservation.builder()
+        Reservation reservation = Reservation.builder()
                 .id(reservationDTO.getId())
                 .username(reservationDTO.getUsername())
                 .startDate(reservationDTO.getStartDate())
                 .endDate(reservationDTO.getEndDate())
                 .resource(reservationDTO.getResource())
                 .build();
+
+        reservationRepository.save(reservation);
+    }
+
+    @Override
+    public void deleteReservationById(Long id) {
+        reservationRepository.deleteById(id);
     }
 }

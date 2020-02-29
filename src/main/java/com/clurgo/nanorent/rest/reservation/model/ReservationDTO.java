@@ -4,7 +4,7 @@ import com.clurgo.nanorent.entity.Resource;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Data
 @Builder
@@ -12,7 +12,7 @@ public class ReservationDTO {
 
     private Long id;
     private String username;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private Resource resource;
 }

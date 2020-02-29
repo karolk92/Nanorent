@@ -22,7 +22,7 @@ public class ReservationRestController {
 
     @PostMapping("category/resource/reservation")
     @ExceptionHandler({ AlreadyDefinedReservationException.class,
-            ReservationInPastException.class,})
+            ReservationInPastException.class})
     @ResponseStatus(HttpStatus.CREATED)
     public void createReservation(@RequestBody ReservationDTO reservationDto) {
         reservationValidator.validate(reservationDto);

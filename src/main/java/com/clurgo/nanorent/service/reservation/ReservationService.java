@@ -8,5 +8,5 @@ public interface ReservationService {
 
     void addReservation(ReservationDTO reservationDTO);
 
-    void deleteReservation(ReservationDTO reservationDTO);
+    void deleteReservationById(Long id);
 }

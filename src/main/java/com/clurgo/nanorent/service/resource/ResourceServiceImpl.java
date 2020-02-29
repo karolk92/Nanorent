@@ -3,15 +3,17 @@ package com.clurgo.nanorent.service.resource;
 import com.clurgo.nanorent.entity.Resource;
 import com.clurgo.nanorent.repository.ResourceRepository;
 import com.clurgo.nanorent.rest.resource.model.ResourceDTO;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@AllArgsConstructor
 @Service
 public class ResourceServiceImpl implements ResourceService {
 
-    private ResourceRepository resourceRepository;
+    private final ResourceRepository resourceRepository;
 
     @Override
     public List<ResourceDTO> getResourcesByCategoryId(Long categoryId) {
@@ -28,7 +30,6 @@ public class ResourceServiceImpl implements ResourceService {
 
     @Override
     public ResourceDTO getResourceById(Long id) {
-        //todo optional
         Resource resource = resourceRepository.findById(id).get();
 
         return ResourceDTO.builder()
@@ -41,22 +42,17 @@ public class ResourceServiceImpl implements ResourceService {
 
     @Override
     public void addResource(ResourceDTO resourceDTO) {
-        Resource resource = mapToResource(resourceDTO);
-        resourceRepository.save(resource);
-    }
-
-    @Override
-    public void deleteResource(ResourceDTO resourceDTO) {
-        Resource resource = mapToResource(resourceDTO);
-        resourceRepository.delete(resource);
-    }
-
-    private Resource mapToResource(ResourceDTO resourceDTO) {
-        return Resource.builder()
+        Resource resource = Resource.builder()
                 .id(resourceDTO.getId())
                 .name(resourceDTO.getName())
                 .category(resourceDTO.getCategory())
                 .reservations(resourceDTO.getReservations())
                 .build();
+        resourceRepository.save(resource);
+    }
+
+    @Override
+    public void deleteResourceById(Long id) {
+        resourceRepository.deleteById(id);
     }
 }

@@ -2,27 +2,23 @@ package com.clurgo.nanorent.rest.resource;
 
 import com.clurgo.nanorent.rest.resource.model.ResourceDTO;
 import com.clurgo.nanorent.service.resource.ResourceService;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("/resources")
 public class ResourceRestController {
 
     private final ResourceService resourceService;
 
-    public ResourceRestController(ResourceService resourceService) {
-        this.resourceService = resourceService;
+    @GetMapping("/{id}")
+    public ResourceDTO getResourceById(@PathVariable Long id) {
+        return resourceService.getResourceById(id);
     }
 
-    @GetMapping
-    public ResourceDTO getResourceById(@PathVariable Long resourceId) {
-        return resourceService.getResourceById(resourceId);
+    @DeleteMapping(value = "{id}")
+    public void deleteResourceById(@PathVariable("id") Long id) {
+        resourceService.deleteResourceById(id);
     }
-
-    @PutMapping
-    public void addResource(@RequestBody ResourceDTO resourceDTO) {
-        resourceService.addResource(resourceDTO);
-    }
-
-
 }
