@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
 @RestController
+@CrossOrigin
 @RequestMapping("/resources")
 public class ResourceRestController {
 
