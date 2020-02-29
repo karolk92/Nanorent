@@ -10,10 +10,4 @@ public class ResourceDTO {
     private Long id;
     private String name;
     private Long categoryId;
-
-    public ResourceDTO(Long id, String name, Long categoryId) {
-        this.id = id;
-        this.name = name;
-        this.categoryId = categoryId;
-    }
 }
