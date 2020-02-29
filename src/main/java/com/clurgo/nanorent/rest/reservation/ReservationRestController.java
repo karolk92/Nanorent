@@ -31,9 +31,9 @@ public class ReservationRestController {
         reservationService.addReservation(reservationDTO);
     }
 
-    @GetMapping("/resource?id={id}")
+    @GetMapping("/resource")
     @ResponseStatus(HttpStatus.OK)
-    public List<ReservationDTO> getReservationsByResourceId(@PathVariable("id") Long id) {
+    public List<ReservationDTO> getReservationsByResourceId(@RequestParam("id") Long id) {
 
         return reservationService.getReservationsByResourceId(id);
     }
