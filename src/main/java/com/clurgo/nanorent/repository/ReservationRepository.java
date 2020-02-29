@@ -11,10 +11,10 @@ import java.util.List;
 
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
 
-    @Query(value = "SELECT count(*) FROM Reservation " +
-            "WHERE (startDate > :startDate AND startDate < :endDate) AND (endDate > :startDate AND endDate < :endDate)",
+    @Query(value = "SELECT count(*) FROM reservation r " +
+            "WHERE r.startDate between ?1 and ?2 AND r.endDate between ?1 and ?2",
                 nativeQuery = true)
-    long countReservations(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
+    Integer countReservations(LocalDate startDate,  LocalDate endDate);
 
     List<ReservationDTO> getReservationByResource_Id(Long id);
 }
