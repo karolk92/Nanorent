@@ -1,50 +1,29 @@
 package com.clurgo.nanorent.service.reservation;
 
-import com.clurgo.nanorent.entity.Reservation;
-import com.clurgo.nanorent.repository.ReservationRepository;
-import com.clurgo.nanorent.rest.reservation.model.ReservationDTO;
+import com.clurgo.nanorent.service.category.CategoryService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
-public class ReservationServiceImpl implements ReservationService {
+public class ReservationServiceImpl implements CategoryService {
 
-    private ReservationRepository reservationRepository;
 
     @Override
-    public ReservationDTO getReservationById(Long id) {
-        //todo optional
-        Reservation reservation = reservationRepository.findById(id).orElseThrow();
-
-        return ReservationDTO.builder()
-                .id(reservation.getId())
-                .username(reservation.getUsername())
-                .startDate(reservation.getStartDate())
-                .endDate(reservation.getEndDate())
-                .resource(reservation.getResource())
-                .build();
+    @Transactional
+    public List<Category> getCategories() {
+        return null;
     }
 
     @Override
-    public void addReservation(ReservationDTO reservationDTO) {
-        Reservation reservation = mapToReservation(reservationDTO);
-
-        reservationRepository.save(reservation);
+    public List<Resource> getResources(Long categoryId) {
+        return null;
     }
 
     @Override
-    public void deleteReservation(ReservationDTO reservationDTO) {
-        Reservation reservation = mapToReservation(reservationDTO);
+    @Transactional
+    public void addCategory(String categoryName) {
 
-        reservationRepository.save(reservation);
-    }
-
-    private Reservation mapToReservation(ReservationDTO reservationDTO) {
-        return Reservation.builder()
-                .id(reservationDTO.getId())
-                .username(reservationDTO.getUsername())
-                .startDate(reservationDTO.getStartDate())
-                .endDate(reservationDTO.getEndDate())
-                .resource(reservationDTO.getResource())
-                .build();
     }
 }
