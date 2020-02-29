@@ -24,7 +24,6 @@ public class Resource {
     @ManyToOne(fetch = FetchType.EAGER)
     private Category category;
 
-    @OneToMany
-    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "resource")
     private List<Reservation> reservations = new ArrayList<>();
 }

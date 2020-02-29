@@ -12,7 +12,7 @@ import java.util.List;
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
 
     @Query(value = "SELECT count(*) FROM reservation r " +
-            "WHERE r.startDate between ?1 and ?2 AND r.endDate between ?1 and ?2",
+            "WHERE r.start_date between ?1 and ?2 AND r.end_date between ?1 and ?2",
                 nativeQuery = true)
     Integer countReservations(LocalDate startDate,  LocalDate endDate);
 
