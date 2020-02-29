@@ -22,7 +22,6 @@ public class CategoryServiceImpl implements CategoryService{
         return categories.stream().map(o -> CategoryDTO.builder()
             .id(o.getId())
             .name(o.getName())
-            .resources(o.getResources())
             .build())
             .collect(Collectors.toList());
     }
@@ -34,7 +33,6 @@ public class CategoryServiceImpl implements CategoryService{
         return CategoryDTO.builder()
                 .id(category.getId())
                 .name(category.getName())
-                .resources(category.getResources())
                 .build();
     }
 
@@ -42,7 +40,6 @@ public class CategoryServiceImpl implements CategoryService{
     public void addCategory(CategoryDTO categoryDTO) {
         Category category = Category.builder()
                 .name(categoryDTO.getName())
-                .resources(categoryDTO.getResources())
                 .build();
 
         categoryRepository.save(category);
@@ -52,4 +49,5 @@ public class CategoryServiceImpl implements CategoryService{
     public void deleteCategoryById(Long id) {
         categoryRepository.deleteById(id);
     }
+
 }

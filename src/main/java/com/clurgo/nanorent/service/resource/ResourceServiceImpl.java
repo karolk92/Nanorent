@@ -1,12 +1,15 @@
 package com.clurgo.nanorent.service.resource;
 
+import com.clurgo.nanorent.entity.Category;
 import com.clurgo.nanorent.entity.Resource;
+import com.clurgo.nanorent.repository.CategoryRepository;
 import com.clurgo.nanorent.repository.ResourceRepository;
 import com.clurgo.nanorent.rest.resource.model.ResourceDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
@@ -14,6 +17,7 @@ import java.util.stream.Collectors;
 public class ResourceServiceImpl implements ResourceService {
 
     private final ResourceRepository resourceRepository;
+    private final CategoryRepository categoryRepository;
 
     @Override
     public List<ResourceDTO> getResourcesByCategoryId(Long categoryId) {
@@ -22,8 +26,6 @@ public class ResourceServiceImpl implements ResourceService {
         return resources.stream().map(o -> ResourceDTO.builder()
                 .id(o.getId())
                 .name(o.getName())
-                .category(o.getCategory())
-                .reservations(o.getReservations())
                 .build())
                 .collect(Collectors.toList());
     }
@@ -35,17 +37,15 @@ public class ResourceServiceImpl implements ResourceService {
         return ResourceDTO.builder()
                 .id(resource.getId())
                 .name(resource.getName())
-                .category(resource.getCategory())
-                .reservations(resource.getReservations())
                 .build();
     }
 
     @Override
     public void addResource(ResourceDTO resourceDTO) {
+        Optional<Category> category = categoryRepository.findById(resourceDTO.getCategoryId());
         Resource resource = Resource.builder()
                 .name(resourceDTO.getName())
-                .category(resourceDTO.getCategory())
-                .reservations(resourceDTO.getReservations())
+                .category(category.get())
                 .build();
         resourceRepository.save(resource);
     }
@@ -54,4 +54,5 @@ public class ResourceServiceImpl implements ResourceService {
     public void deleteResourceById(Long id) {
         resourceRepository.deleteById(id);
     }
+
 }
