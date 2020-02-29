@@ -1,19 +1,17 @@
 package com.clurgo.nanorent.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode(exclude = "resources")
+//@EqualsAndHashCode(exclude = "resources")
+@Builder
+@Data
 @Entity
 public class Category {
 
@@ -24,5 +22,5 @@ public class Category {
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Resource> resources = new HashSet<>();
+    private List<Resource> resources = new ArrayList<>();
 }

@@ -5,10 +5,8 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode
+@Builder
+@Data
 @NoArgsConstructor
 @Entity
 public class Reservation {
@@ -16,8 +14,7 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String firstName;
-    private String lastName;
+    private String username;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
 

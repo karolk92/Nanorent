@@ -27,8 +27,9 @@ public class ResourceServiceImpl implements ResourceService {
     }
 
     @Override
-    public ResourceDTO getResourceById(Long resourceId) {
-        Resource resource = resourceRepository.findById(resourceId).orElseThrow();
+    public ResourceDTO getResourceById(Long id) {
+        //todo optional
+        Resource resource = resourceRepository.findById(id).orElseThrow();
 
         return ResourceDTO.builder()
                 .id(resource.getId())
