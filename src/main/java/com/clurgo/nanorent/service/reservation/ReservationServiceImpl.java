@@ -28,7 +28,6 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public void addReservation(ReservationDTO reservationDTO) {
         Reservation reservation = Reservation.builder()
-                .id(reservationDTO.getId())
                 .username(reservationDTO.getUsername())
                 .startDate(reservationDTO.getStartDate())
                 .endDate(reservationDTO.getEndDate())

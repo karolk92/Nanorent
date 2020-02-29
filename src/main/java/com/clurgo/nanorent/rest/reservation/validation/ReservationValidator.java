@@ -7,7 +7,7 @@ import com.clurgo.nanorent.rest.reservation.model.ReservationDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Component
 @RequiredArgsConstructor
@@ -21,7 +21,7 @@ public class ReservationValidator {
     }
 
     private void checkReservationDateNotInPast(ReservationDTO reservationDTO){
-        if(reservationDTO.getStartDate().isBefore(LocalDateTime.now()) || reservationDTO.getEndDate().isBefore(LocalDateTime.now()))
+        if(reservationDTO.getStartDate().isBefore(LocalDate.now()) || reservationDTO.getEndDate().isBefore(LocalDate.now()))
             throw new ReservationInPastException();
     }
 

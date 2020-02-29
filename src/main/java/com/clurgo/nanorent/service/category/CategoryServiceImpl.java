@@ -41,7 +41,6 @@ public class CategoryServiceImpl implements CategoryService{
     @Override
     public void addCategory(CategoryDTO categoryDTO) {
         Category category = Category.builder()
-                .id(categoryDTO.getId())
                 .name(categoryDTO.getName())
                 .resources(categoryDTO.getResources())
                 .build();

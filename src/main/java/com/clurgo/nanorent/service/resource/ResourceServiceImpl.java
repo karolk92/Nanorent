@@ -43,7 +43,6 @@ public class ResourceServiceImpl implements ResourceService {
     @Override
     public void addResource(ResourceDTO resourceDTO) {
         Resource resource = Resource.builder()
-                .id(resourceDTO.getId())
                 .name(resourceDTO.getName())
                 .category(resourceDTO.getCategory())
                 .reservations(resourceDTO.getReservations())

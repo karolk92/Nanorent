@@ -1,10 +1,9 @@
 package com.clurgo.nanorent.rest.category.model;
 
-import com.clurgo.nanorent.entity.Resource;
+import com.clurgo.nanorent.rest.resource.model.ResourceDTO;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -13,5 +12,5 @@ public class CategoryDTO {
 
     private Long id;
     private String name;
-    private List<Resource> resources;
+    private List<ResourceDTO> resourceDTO;
 }
