@@ -11,7 +11,8 @@ public class ReservationDTO {
 
     private Long reservationId;
     private Long recourseId;
+    private String firstName;
+    private String lastName;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
-    private String nameAndSurname;
 }
