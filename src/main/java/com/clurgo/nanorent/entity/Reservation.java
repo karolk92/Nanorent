@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 @Builder
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Reservation {
 
@@ -20,4 +21,6 @@ public class Reservation {
 
     @ManyToOne
     private Resource resource;
+
+
 }

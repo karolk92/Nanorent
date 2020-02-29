@@ -1,0 +1,8 @@
+INSERT INTO category (name)
+VALUES
+('MONITOR'),
+('PRINTER'),
+('LAPTOP'),
+('CONFERENCE_ROOM'),
+('FIFA')
+

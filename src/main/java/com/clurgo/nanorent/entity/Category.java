@@ -12,6 +12,8 @@ import java.util.Set;
 //@EqualsAndHashCode(exclude = "resources")
 @Builder
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Category {
 

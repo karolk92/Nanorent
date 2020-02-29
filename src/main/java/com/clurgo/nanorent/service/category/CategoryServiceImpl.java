@@ -3,11 +3,13 @@ package com.clurgo.nanorent.service.category;
 import com.clurgo.nanorent.entity.Category;
 import com.clurgo.nanorent.repository.CategoryRepository;
 import com.clurgo.nanorent.rest.category.model.CategoryDTO;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@AllArgsConstructor
 @Service
 public class CategoryServiceImpl implements CategoryService{
 

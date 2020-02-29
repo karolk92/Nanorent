@@ -10,8 +10,9 @@ import java.util.List;
 import java.util.Set;
 
 @Builder
-@NoArgsConstructor
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Resource {
 
@@ -26,9 +27,4 @@ public class Resource {
     @OneToMany
     @JsonIgnore
     private List<Reservation> reservations = new ArrayList<>();
-
-    public Resource(String name, Category category) {
-        this.name = name;
-        this.category = category;
-    }
 }
