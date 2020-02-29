@@ -1,5 +1,6 @@
 package com.clurgo.nanorent.rest.category;
 
+import com.clurgo.nanorent.rest.category.model.CategoryDTO;
 import com.clurgo.nanorent.service.category.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,17 +19,18 @@ public class CategoryRestController {
     }
 
     @GetMapping
-    public List<Category> getCategories() {
-        return null;
+    public List<CategoryDTO> getCategories() {
+        return categoryService.getCategories();
     }
 
     @GetMapping(value = "/{categorieId}")
-    public List<ResourceDTO> getResources(@PathVariable("categorieId") Long categorieId) {
-        return null;
+    public CategoryDTO getResources(@PathVariable("categorieId") Long categorieId) {
+        return categoryService.getCategoryById(categorieId);
     }
 
-    @PutMapping(value = "/{categorieName}")
-    public void addNewCategory(@PathVariable("categoryName") String categoryName) {
+    @PutMapping
+    public void addCategory(@RequestBody CategoryDTO categoryDTO) {
+        categoryService.addCategory(categoryDTO);
 
     }
 

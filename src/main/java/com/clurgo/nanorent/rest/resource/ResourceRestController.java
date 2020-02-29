@@ -14,17 +14,14 @@ public class ResourceRestController {
         this.resourceService = resourceService;
     }
 
-    @GetMapping(value = "/{resourceId}")
-    public ResourceDTO getResourceById(@PathVariable("resourceId") Long resourceId) {
+    @GetMapping
+    public ResourceDTO getResourceById(@PathVariable Long resourceId) {
         return resourceService.getResourceById(resourceId);
     }
 
     @PutMapping
-    public void addResource(@PathVariable("categoryId") Long categoryId,
-                            @PathVariable("resourceName") String resourceName) {
-
-        resourceService.addResource(categoryId, resourceName);
-
+    public void addResource(@RequestBody ResourceDTO resourceDTO) {
+        resourceService.addResource(resourceDTO);
     }
 
 

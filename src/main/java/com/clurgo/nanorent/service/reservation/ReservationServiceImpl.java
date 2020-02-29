@@ -1,5 +1,6 @@
 package com.clurgo.nanorent.service.reservation;
 
+import com.clurgo.nanorent.rest.reservation.model.ReservationDTO;
 import com.clurgo.nanorent.service.category.CategoryService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -7,23 +8,21 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class ReservationServiceImpl implements CategoryService {
+public class ReservationServiceImpl implements ReservationService{
 
 
     @Override
-    @Transactional
-    public List<Category> getCategories() {
+    public ReservationDTO getReservationById(Long id) {
         return null;
     }
 
     @Override
-    public List<Resource> getResources(Long categoryId) {
-        return null;
+    public void addReservation(ReservationDTO reservationDTO) {
+
     }
 
     @Override
-    @Transactional
-    public void addCategory(String categoryName) {
+    public void deleteReservation(ReservationDTO reservationDTO) {
 
     }
 }
