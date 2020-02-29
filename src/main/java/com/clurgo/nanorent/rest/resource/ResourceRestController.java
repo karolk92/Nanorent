@@ -1,5 +1,6 @@
 package com.clurgo.nanorent.rest.resource;
 
+import com.clurgo.nanorent.rest.resource.model.ResourceDTO;
 import com.clurgo.nanorent.service.resource.ResourceService;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,13 +16,15 @@ public class ResourceRestController {
 
     @GetMapping(value = "/{resourceId}")
     public ResourceDTO getResourceById(@PathVariable("resourceId") Long resourceId) {
-        return resourceService.getResource(resourceId);
+        return resourceService.getResourceById(resourceId);
     }
 
     @PutMapping
-    public void addResource(@PathVariable("categoryId") String categoryId,
+    public void addResource(@PathVariable("categoryId") Long categoryId,
                             @PathVariable("resourceName") String resourceName) {
+
         resourceService.addResource(categoryId, resourceName);
+
     }
 
 

@@ -2,10 +2,7 @@ package com.clurgo.nanorent.rest.category;
 
 import com.clurgo.nanorent.service.category.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,19 +17,19 @@ public class CategoryRestController {
         this.categoryService = categoryService;
     }
 
-    @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-    public List<Categorie> getAllCategories() {
-        return categoryService.getCategories();
+    @GetMapping
+    public List<Category> getCategories() {
+        return null;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{categorieId}", produces = "application/json")
-    public List<ResourceDTO> getAllResources(@PathVariable("categorieId") Long categorieId) {
-        return categoryService.getResources(categorieId);
+    @GetMapping(value = "/{categorieId}")
+    public List<ResourceDTO> getResources(@PathVariable("categorieId") Long categorieId) {
+        return null;
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/add/{categorieName}")
+    @PutMapping(value = "/{categorieName}")
     public void addNewCategory(@PathVariable("categoryName") String categoryName) {
-        categoryService.addCategorie(categoryName);
+
     }
 
 
