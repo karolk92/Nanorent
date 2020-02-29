@@ -12,5 +12,5 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
     @Query(value = "SELECT count(*) FROM Reservation " +
             "WHERE (startDate > :startDate AND startDate < :endDate) AND (endDate > :startDate AND endDate < :endDate)",
                 nativeQuery = true)
-    long checkIsReservationAllowed(@Param("startDate") LocalDateTime startDate, @Param("endDate") LocalDateTime endDate);
+    long countReservations(@Param("startDate") LocalDateTime startDate, @Param("endDate") LocalDateTime endDate);
 }

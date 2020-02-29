@@ -26,7 +26,7 @@ public class ReservationValidator {
     }
 
     private void checkReservationIsNotDefinedInRange(ReservationDTO reservationDTO){
-        if(reservationRepository.checkIsReservationAllowed(reservationDTO.getStartDate(), reservationDTO.getEndDate()) > 0)
+        if(reservationRepository.countReservations(reservationDTO.getStartDate(), reservationDTO.getEndDate()) > 0)
             throw new AlreadyDefinedReservationException();
     }
 
