@@ -4,12 +4,12 @@ import com.clurgo.nanorent.entity.Category;
 import com.clurgo.nanorent.entity.Resource;
 import com.clurgo.nanorent.repository.CategoryRepository;
 import com.clurgo.nanorent.repository.ResourceRepository;
+import com.clurgo.nanorent.rest.category.errors.CategoryNotFoundException;
 import com.clurgo.nanorent.rest.resource.model.ResourceDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
@@ -42,10 +42,10 @@ public class ResourceServiceImpl implements ResourceService {
 
     @Override
     public void addResource(ResourceDTO resourceDTO) {
-        Optional<Category> category = categoryRepository.findById(resourceDTO.getCategoryId());
+        Category category = categoryRepository.findById(resourceDTO.getCategoryId()).orElseThrow(CategoryNotFoundException::new);
         Resource resource = Resource.builder()
                 .name(resourceDTO.getName())
-                .category(category.get())
+                .category(category)
                 .build();
         resourceRepository.save(resource);
     }

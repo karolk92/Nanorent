@@ -2,6 +2,7 @@ package com.clurgo.nanorent.service.category;
 
 import com.clurgo.nanorent.entity.Category;
 import com.clurgo.nanorent.repository.CategoryRepository;
+import com.clurgo.nanorent.rest.category.errors.CategoryNotFoundException;
 import com.clurgo.nanorent.rest.category.model.CategoryDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,7 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Override
     public CategoryDTO getCategoryById(Long id) {
-        Category category = categoryRepository.findById(id).orElseThrow();
+        Category category = categoryRepository.findById(id).orElseThrow(CategoryNotFoundException::new);
 
         return CategoryDTO.builder()
                 .id(category.getId())

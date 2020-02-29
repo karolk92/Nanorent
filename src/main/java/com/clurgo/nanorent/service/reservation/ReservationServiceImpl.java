@@ -4,12 +4,13 @@ import com.clurgo.nanorent.entity.Reservation;
 import com.clurgo.nanorent.entity.Resource;
 import com.clurgo.nanorent.repository.ReservationRepository;
 import com.clurgo.nanorent.repository.ResourceRepository;
+import com.clurgo.nanorent.rest.reservation.errors.ReservationNotFoundException;
 import com.clurgo.nanorent.rest.reservation.model.ReservationDTO;
+import com.clurgo.nanorent.rest.resource.errors.ResourceNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @AllArgsConstructor
 @Service
@@ -25,7 +26,7 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public ReservationDTO getReservationById(Long id) {
-        Reservation reservation = reservationRepository.findById(id).orElseThrow();
+        Reservation reservation = reservationRepository.findById(id).orElseThrow(ReservationNotFoundException::new);
 
         return ReservationDTO.builder()
                 .id(reservation.getId())
@@ -37,12 +38,12 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public void addReservation(ReservationDTO reservationDTO) {
-        Optional<Resource> resource = resourceRepository.findById(reservationDTO.getResourceId());
+        Resource resource = resourceRepository.findById(reservationDTO.getResourceId()).orElseThrow(ResourceNotFoundException::new);
         Reservation reservation = Reservation.builder()
                 .username(reservationDTO.getUsername())
                 .startDate(reservationDTO.getStartDate())
                 .endDate(reservationDTO.getEndDate())
-                .resource(resource.get())
+                .resource(resource)
                 .build();
 
         reservationRepository.save(reservation);

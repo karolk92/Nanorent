@@ -39,6 +39,7 @@ public class ReservationRestController {
     }
 
     @GetMapping("/{id}")
+    @ExceptionHandler({ ReservationNotFoundException.class, })
     @ResponseStatus(HttpStatus.OK)
     public ReservationDTO getReservationById(@PathVariable("id") Long id) {
 
